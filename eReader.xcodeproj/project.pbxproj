@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		884EBD7A2D36201200C2344F /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884EBD792D36201200C2344F /* FavoritesManager.swift */; };
+		884EBD7E2D378B6300C2344F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 884EBD7D2D378B6300C2344F /* SwiftSoup */; };
+		884EBD802D378B9B00C2344F /* BookLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884EBD7F2D378B9B00C2344F /* BookLoader.swift */; };
 		88E359A12D154EC40089D486 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E359A02D154EC40089D486 /* AppDelegate.swift */; };
 		88E359A32D154EC40089D486 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E359A22D154EC40089D486 /* SceneDelegate.swift */; };
 		88E359A52D154EC40089D486 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E359A42D154EC40089D486 /* ViewController.swift */; };
@@ -24,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		884EBD792D36201200C2344F /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
+		884EBD7F2D378B9B00C2344F /* BookLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLoader.swift; sourceTree = "<group>"; };
 		88E3599D2D154EC40089D486 /* eReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88E359A02D154EC40089D486 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88E359A22D154EC40089D486 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,18 +49,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				884EBD7E2D378B6300C2344F /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		884EBD7B2D36201700C2344F /* Storage */ = {
+		884EBD7B2D36201700C2344F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				884EBD792D36201200C2344F /* FavoritesManager.swift */,
+				884EBD7F2D378B9B00C2344F /* BookLoader.swift */,
 			);
-			path = Storage;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		88E359942D154EC40089D486 = {
@@ -84,7 +89,7 @@
 				88E359A22D154EC40089D486 /* SceneDelegate.swift */,
 				88E359A42D154EC40089D486 /* ViewController.swift */,
 				88E359BE2D1946CA0089D486 /* Models */,
-				884EBD7B2D36201700C2344F /* Storage */,
+				884EBD7B2D36201700C2344F /* Managers */,
 				88E359C32D1BEBFF0089D486 /* Cells */,
 				88E359B42D1554B90089D486 /* Storyboards */,
 				88E359A92D154EC60089D486 /* Assets.xcassets */,
@@ -137,6 +142,9 @@
 			dependencies = (
 			);
 			name = eReader;
+			packageProductDependencies = (
+				884EBD7D2D378B6300C2344F /* SwiftSoup */,
+			);
 			productName = eReader;
 			productReference = 88E3599D2D154EC40089D486 /* eReader.app */;
 			productType = "com.apple.product-type.application";
@@ -165,6 +173,9 @@
 				Base,
 			);
 			mainGroup = 88E359942D154EC40089D486;
+			packageReferences = (
+				884EBD7C2D378B6300C2344F /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = 88E3599E2D154EC40089D486 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -200,6 +211,7 @@
 				88E359A52D154EC40089D486 /* ViewController.swift in Sources */,
 				884EBD7A2D36201200C2344F /* FavoritesManager.swift in Sources */,
 				88E359C92D1BEC3F0089D486 /* TableViewCell.swift in Sources */,
+				884EBD802D378B9B00C2344F /* BookLoader.swift in Sources */,
 				88E359A12D154EC40089D486 /* AppDelegate.swift in Sources */,
 				88E359A32D154EC40089D486 /* SceneDelegate.swift in Sources */,
 			);
@@ -455,6 +467,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		884EBD7C2D378B6300C2344F /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		884EBD7D2D378B6300C2344F /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 884EBD7C2D378B6300C2344F /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 88E359952D154EC40089D486 /* Project object */;
 }

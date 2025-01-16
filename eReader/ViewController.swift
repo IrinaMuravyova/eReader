@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     let sectors = ["Last updates", "Coming Soon", "Favourited", "Popular"]
     let favoriteSection = 2
-    var books = getBooks()
+    var books: [Book] = []//getBooks()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +21,11 @@ class ViewController: UIViewController {
         tableView.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+        let bookLoader = BookLoader()
+        books = bookLoader.fetchBooks()
+        DispatchQueue.main.async {
+            print(self.books)
+        }
     }
 }
 

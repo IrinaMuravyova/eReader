@@ -97,6 +97,7 @@ class BookLoader {
                                                 
                                     ]
                                 )
+                                print("book ", book.author, "level", book.level)
 //                                print("book ", book.title, "category", book.attributes?["category"] ?? "")
 
                                 books.append(book)

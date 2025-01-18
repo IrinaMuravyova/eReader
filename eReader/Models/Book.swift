@@ -27,7 +27,7 @@ struct Language: Codable {
 let english = Language(
     code: "en",
     name: "English",
-    proficiencyLevels: ["A1", "A2", "B1", "B2", "C1", "C2", "Native"]
+    proficiencyLevels: ["starter", "elementary", "pre-intermediate", "intermediate", "intermediate-plus", "upper-intermediate", "advanced"]
 )
 
 let russian = Language(
@@ -47,12 +47,12 @@ let languages = [english, russian, chinese]
 
 let localizedProficiencyLevelsByEnglish: [String: [String: String]] = [
     languages[0].code: [
-        languages[0].proficiencyLevels[0]: "Beginner",
-        languages[0].proficiencyLevels[1]: "Elementary",
-        languages[0].proficiencyLevels[2]: "Intermediate",
-        languages[0].proficiencyLevels[3]: "Upper Intermediate",
-        languages[0].proficiencyLevels[4]: "Advanced",
-        languages[0].proficiencyLevels[5]: "Proficient"
+        languages[0].proficiencyLevels[0]: "A1",
+        languages[0].proficiencyLevels[1]: "A2",
+        languages[0].proficiencyLevels[2]: "B1",
+        languages[0].proficiencyLevels[3]: "B2",
+        languages[0].proficiencyLevels[4]: "C1",
+        languages[0].proficiencyLevels[5]: "C2"
     ],
     languages[1].code: [
         languages[1].proficiencyLevels[0]: "Beginner",

@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     let sectors = ["Last updates", "Coming Soon", "Favourited", "Popular"]
     let favoriteSection = 2
-    var books: [Book] = []//getBooks()
+    var books: [Book] = [] //getBooks()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +21,21 @@ class ViewController: UIViewController {
         tableView.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+        
         let bookLoader = BookLoader()
-        books = bookLoader.fetchBooks()
-        DispatchQueue.main.async {
-            print(self.books)
+        bookLoader.fetchBooks{ [weak self] loadedBooks in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async{
+                if loadedBooks.isEmpty {
+                       print("Массив книг пуст.")
+                   } else {
+                       // Обновляем массив и перезагружаем таблицу
+                       self.books = loadedBooks
+                       self.tableView.reloadData()
+//                       print("Загруженные книги: \(loadedBooks)")
+                   }
+           }
         }
     }
 }
@@ -61,15 +72,13 @@ extension ViewController: UITableViewDataSource {
         dateFormatter.dateFormat = "dd.MM.yyyy"
         
         let booksForShow: [Book] = switch indexPath.section {
-            case 0: books.filter({
-                $0.attributes?["dateAdded"] != nil
-                && dateFormatter.date(from: $0.attributes!["dateAdded"]!) ?? now  >= oneMonthAgo })
+            case 0: books.filter({$0.attributes?["category"] == "Last updates"})
             case 1:
-                books.filter({($0.attributes?["comming_soon"] != nil)})
+                books.filter({($0.attributes?["category"] == "Coming Soon")})
             case 2:
                 FavoritesManager.shared.loadFavorites(for: "test")
             case 3:
-                books.filter({($0.attributes?["popular"] != nil)})
+                books.filter({($0.attributes?["category"] == "Popular at online reader")})
             default:
                 books
         }

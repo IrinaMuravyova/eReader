@@ -38,7 +38,8 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with book: Book) {
-        coverImageView.image = UIImage(named: book.cover)
+        
+        coverImageView.loadImage(from: book.cover, placeholder: UIImage(named: "placeholder"))
         coverImageView.contentMode = .scaleAspectFill
         soundImageView.isHidden = book.sound == nil
         bookTitleLabel.text = book.title

@@ -19,6 +19,7 @@ class TableViewCell: UITableViewCell {
     
     let unlikedColor: UIColor = .gray
     let likedColor: UIColor = .red
+    let favoriteSection = 2 //TODO: брать с ViewController
     var books = getBooks()
     // Замыкание для обновления секции
     var onSectionUpdate: (() -> Void)?
@@ -56,7 +57,6 @@ extension TableViewCell: UICollectionViewDataSource {
         item.configure(with: books[indexPath.row])
         let favoriteBooks = FavoritesManager.shared.loadFavorites(for: "test")
         item.likedImage.tintColor = favoriteBooks.contains(where: {$0.id == books[indexPath.row].id}) ? likedColor : unlikedColor
-        
         // Обработка клика
         item.favoriteImageTapped = { [weak self] in
             self?.handleImageTap(at: indexPath)

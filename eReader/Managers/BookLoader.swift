@@ -58,7 +58,7 @@ class BookLoader {
                         let bookContainers = try category.parent()!.parent()!.select(".book-container") //TODO: обработать опционалы
                         
                         for bookContainer in bookContainers {
-                            let id = try bookContainer.attr("data-id")
+                            let id = try bookContainer.attr("data-id") //TODO: уточнить селектор
                             let author = try bookContainer.parent()?.select("p.cover").text()
                             let title = try bookContainer.select("h4").text()
                             
@@ -103,6 +103,12 @@ class BookLoader {
 
                                     group.leave() // Уменьшаем счётчик операций
                                     books.append(book)
+                                }
+                            } else {
+                                if let category = book.attributes?["category"] {
+                                    if category == "Coming Soon" {
+                                        books.append(book)
+                                    }
                                 }
                             }
                         }

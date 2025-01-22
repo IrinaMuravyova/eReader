@@ -16,7 +16,6 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet var downloadedLabel: UILabel!
     @IBOutlet var likedImage: UIImageView!
     @IBOutlet var likedLabel: UILabel!
-    @IBOutlet var lookedLabel: UILabel!
     @IBOutlet var statisticsView: UIView!
     
     static let identifier  = "CollectionViewCell"
@@ -74,6 +73,12 @@ class CollectionViewCell: UICollectionViewCell {
             likedLabel.text = likedCount
         } else {
             likedLabel.text = ""
+        }
+        
+        if let category = book.attributes?["category"] {
+            if category == "Coming Soon" {
+                statisticsView.isHidden = true
+            }
         }
     }
     

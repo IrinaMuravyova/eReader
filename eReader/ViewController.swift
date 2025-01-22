@@ -65,12 +65,6 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        let calendar = Calendar.current
-//        let now = Date()
-//        let oneMonthAgo = calendar.date(byAdding: .month, value: -1, to: now)!
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd.MM.yyyy"
-        
         let booksForShow: [Book] = switch indexPath.section {
             case 0: books.filter({$0.attributes?["category"] == "Last updates"})
             case 1:

@@ -47,17 +47,19 @@ class CollectionViewCell: UICollectionViewCell {
         likedImage.tintColor = .gray
         levelImageView.image = switch book.level {
         case english.proficiencyLevels[0] :
-            UIImage(named: "a1_starter")
+            UIImage(named: "starter")
         case english.proficiencyLevels[1] :
-            UIImage(named: "a2_elementary")
+            UIImage(named: "elementary")
         case english.proficiencyLevels[2] :
-            UIImage(named: "b1_pre_intermediate")
+            UIImage(named: "pre_intermediate")
         case english.proficiencyLevels[3] :
-            UIImage(named: "b2_intermediate")
+            UIImage(named: "intermediate")
         case english.proficiencyLevels[4] :
-            UIImage(named: "c1_intermediate_plus")
+            UIImage(named: "intermediate_plus")
         case english.proficiencyLevels[5] :
-            UIImage(named: "c2_advanced")
+            UIImage(named: "upper-intermediate")
+        case english.proficiencyLevels[6] :
+            UIImage(named: "advanced")
         default:
             UIImage(named: "native")
         }
@@ -73,17 +75,9 @@ class CollectionViewCell: UICollectionViewCell {
         } else {
             likedLabel.text = ""
         }
-        
-        if let lookedCount = book.attributes?["looked"] {
-            lookedLabel.text = lookedCount
-        } else {
-            lookedLabel.text = ""
-        }
-        
     }
     
     @objc private func favoriteImageTappedAction() {
         favoriteImageTapped?()
     }
-
 }

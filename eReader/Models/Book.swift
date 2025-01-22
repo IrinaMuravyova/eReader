@@ -14,7 +14,7 @@ struct Book: Codable {
     let downloadLink: String
     let language: Language
     let level: String
-    let attributes: [String: String]?
+    var attributes: [String: String]?
 }
 
 struct Language: Codable {

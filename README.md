@@ -56,7 +56,6 @@
       TableViewCell - отвечает за отображение секции каталога
       CollectionViewCell - содержит все аттрибуты книги 
   
-
 ## Developers
 
 - [Irina Muravyova](https://github.com/IrinaMuravyova)

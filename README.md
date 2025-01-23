@@ -61,4 +61,4 @@
 - [Irina Muravyova](https://github.com/IrinaMuravyova)
 
 ## License
-Project TrackList is distributed under the MIT license.
+Project eReading is distributed under the MIT license.

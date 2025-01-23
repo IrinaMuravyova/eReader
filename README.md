@@ -37,7 +37,7 @@
 возможность поделиться ссылкой на книгу через соцсети.
 
 
-![screenshot of sample](https://i.ibb.co/b7nCCss/tracing-List.png)
+![screenshot of sample](https://i.ibb.co/vXJbgDp/2025-01-23-11-38-11.png)
 
 ## Documentation
 

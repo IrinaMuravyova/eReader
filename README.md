@@ -61,4 +61,4 @@
 - [Irina Muravyova](https://github.com/IrinaMuravyova)
 
 ## License
-Project eReading is distributed under the MIT license.
+Project eReader is distributed under the MIT license.

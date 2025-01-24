@@ -20,9 +20,8 @@ final class TableViewCell: UITableViewCell {
     let unlikedColor: UIColor = .gray
     let likedColor: UIColor = .red
     let favoriteSection = 2 //TODO: брать с ViewController
-    var books = getBooks()
-    // Замыкание для обновления секции
-    var onSectionUpdate: (() -> Void)?
+    var books: [Book] = []
+    var onSectionUpdate: (() -> Void)? // Замыкание для обновления секции
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,19 +43,22 @@ final class TableViewCell: UITableViewCell {
 }
 
 // MARK: - CollectionView
-extension TableViewCell: UICollectionViewDelegate {
-}
-
 extension TableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         books.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let item = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as! CollectionViewCell
-        item.configure(with: books[indexPath.row])
+        let item = collectionView.dequeueReusableCell(
+            withReuseIdentifier: CollectionViewCell.identifier,
+            for: indexPath)
+        as! CollectionViewCell
         let favoriteBooks = FavoritesManager.shared.loadFavorites(for: "test")
-        item.likedImage.tintColor = favoriteBooks.contains(where: {$0.id == books[indexPath.row].id}) ? likedColor : unlikedColor
+        
+        item.configure(with: books[indexPath.row])
+        item.likedImage.tintColor = favoriteBooks.contains(where: {$0.id == books[indexPath.row].id}) 
+            ? likedColor
+            : unlikedColor
         // Обработка клика
         item.favoriteImageTapped = { [weak self] in
             self?.handleImageTap(at: indexPath)
@@ -65,14 +67,14 @@ extension TableViewCell: UICollectionViewDataSource {
         return item
     }
     
-    private func handleImageTap(at indexPath: IndexPath) {
+    private func handleImageTap(at indexPath: IndexPath) { //TODO: скорректировать алгоритм
         let tappedBook = books[indexPath.row]
-        let favoriteBooks = FavoritesManager.shared.loadFavorites(for: "test")
+        let favoriteBooks = FavoritesManager.shared.loadFavorites(for: "test") //TODO: заменить test на текущего пользователя
         
         if favoriteBooks.contains(where: {$0.id == books[indexPath.row].id}) {
-            FavoritesManager.shared.deleteFavorite(for: "test", book: tappedBook)
+            FavoritesManager.shared.deleteFavorite(for: "test", book: tappedBook) //TODO: заменить test на текущего пользователя
         } else {
-            FavoritesManager.shared.saveFavorite(for: "test", book: books[indexPath.row])
+            FavoritesManager.shared.saveFavorite(for: "test", book: books[indexPath.row]) //TODO: заменить test на текущего пользователя
         }
         
         // Обновляем конкретную ячейку в CollectionView
@@ -81,7 +83,7 @@ extension TableViewCell: UICollectionViewDataSource {
         DispatchQueue.main.async {
             self.onSectionUpdate?()
         }
-        print("Image tapped at index: \(indexPath.item)")
+        print("Image tapped at index: \(indexPath.item)") //TODO: Удалить после отладки
     }
     
 }

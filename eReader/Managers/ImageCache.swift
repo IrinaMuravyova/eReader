@@ -13,7 +13,7 @@ final class ImageCache {
 
 extension UIImageView {
     func loadImage(from urlString: String, placeholder: UIImage? = nil) {
-        // Устанавливаем изображение-заглушку, если задано
+        //TODO: Устанавливаем изображение-заглушку - добавить
         self.image = placeholder
         
         guard let url = URL(string: urlString) else {

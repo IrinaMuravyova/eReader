@@ -8,7 +8,7 @@
 import SwiftSoup
 import UIKit
 
-class BookLoader {
+final class BookLoader {
     
     let urlEReader = "https://english-e-reader.net"
     var books: [Book] = []

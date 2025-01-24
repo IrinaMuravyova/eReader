@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class CollectionViewCell: UICollectionViewCell {
+final class CollectionViewCell: UICollectionViewCell {
     @IBOutlet var coverImageView: UIImageView!
     @IBOutlet var soundImageView: UIImageView!
     @IBOutlet var bookTitleLabel: UILabel!

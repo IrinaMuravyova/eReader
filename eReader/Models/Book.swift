@@ -11,128 +11,20 @@ struct Book: Codable {
     let title: String
     var cover: String
     let sound: String?
-    let downloadLink: String
-    let language: Language
-    let level: String
+    let link: String
+    let level: Levels
     var attributes: [String: String]?
 }
 
-struct Language: Codable {
-    let code: String
-    let name: String
-    let proficiencyLevels: [String]
-}
-
-// MARK: - Language
-let english = Language(
-    code: "en",
-    name: "English",
-    proficiencyLevels: ["starter", "elementary", "pre-intermediate", "intermediate", "intermediate-plus", "upper-intermediate", "advanced"]
-)
-
-let russian = Language(
-    code: "ru",
-    name: "Русский",
-    proficiencyLevels: ["Начальный", "Средний", "Продвинутый", "Свободный"]
-)
-
-let chinese = Language(
-    code: "ch",
-    name: "Chinese",
-    proficiencyLevels: ["HSK1", "HSK2", "HSK3", "HSK4", "HSK5", "HSK6"]
-)
-
-
-let languages = [english, russian, chinese]
-
-let localizedProficiencyLevelsByEnglish: [String: [String: String]] = [
-    languages[0].code: [
-        languages[0].proficiencyLevels[0]: "A1",
-        languages[0].proficiencyLevels[1]: "A2",
-        languages[0].proficiencyLevels[2]: "B1",
-        languages[0].proficiencyLevels[3]: "B2",
-        languages[0].proficiencyLevels[4]: "C1",
-        languages[0].proficiencyLevels[5]: "C2"
-    ],
-    languages[1].code: [
-        languages[1].proficiencyLevels[0]: "Beginner",
-        languages[1].proficiencyLevels[1]: "Intermediate",
-        languages[1].proficiencyLevels[2]: "Advanced",
-        languages[1].proficiencyLevels[3]: "Fluent"
-    ],
-    languages[2].code: [
-        languages[2].proficiencyLevels[0]: "Beginner",
-        languages[2].proficiencyLevels[1]: "Elementary",
-        languages[2].proficiencyLevels[2]: "Intermediate",
-        languages[2].proficiencyLevels[3]: "Upper Intermediate",
-        languages[2].proficiencyLevels[4]: "Advanced",
-        languages[2].proficiencyLevels[5]: "Proficient"
-    ]
-]
-
-let localizedProficiencyLevelsByRussian: [String: [String: String]] = [
-    languages[0].code: [
-        languages[0].proficiencyLevels[0]: "Начальный",
-        languages[0].proficiencyLevels[1]: "Начальный",
-        languages[0].proficiencyLevels[2]: "Средний",
-        languages[0].proficiencyLevels[3]: "Продвинутый",
-        languages[0].proficiencyLevels[4]: "Свободный",
-        languages[0].proficiencyLevels[5]: "Носитель"
-    ],
-    languages[1].code: [
-        languages[1].proficiencyLevels[0]: "Начальный",
-        languages[1].proficiencyLevels[1]: "Средний",
-        languages[1].proficiencyLevels[2]: "Продвинутый",
-        languages[1].proficiencyLevels[3]: "Свободный"
-    ],
-    languages[2].code: [
-        languages[2].proficiencyLevels[0]: "Начальный",
-        languages[2].proficiencyLevels[1]: "Начальный",
-        languages[2].proficiencyLevels[2]: "Средний",
-        languages[2].proficiencyLevels[3]: "Средний",
-        languages[2].proficiencyLevels[4]: "Продвинутый",
-        languages[2].proficiencyLevels[5]: "Свободный"
-    ]
-]
-
-let localizedProficiencyLevelsByChinese: [String: [String: String]] = [
-    languages[0].code: [
-        languages[0].proficiencyLevels[0]: "初学者",
-        languages[0].proficiencyLevels[1]: "初学者",
-        languages[0].proficiencyLevels[2]: "中级",
-        languages[0].proficiencyLevels[3]: "中级",
-        languages[0].proficiencyLevels[4]: "高级",
-        languages[0].proficiencyLevels[5]: "流利"
-    ],
-    languages[1].code: [
-        languages[1].proficiencyLevels[0]: "初学者",
-        languages[1].proficiencyLevels[1]: "中级",
-        languages[1].proficiencyLevels[2]: "高级",
-        languages[1].proficiencyLevels[3]: "流利"
-    ],
-    languages[2].code: [
-        languages[2].proficiencyLevels[0]: "初学者",
-        languages[2].proficiencyLevels[1]: "初学者",
-        languages[2].proficiencyLevels[2]: "中级",
-        languages[2].proficiencyLevels[3]: "中级",
-        languages[2].proficiencyLevels[4]: "高级",
-        languages[2].proficiencyLevels[5]: "流利"
-    ]
-]
-
-let localizedProficiencyLevelsByLocale: [String: [String: [String: String]]] = [
-    "en": localizedProficiencyLevelsByEnglish,
-    "ru": localizedProficiencyLevelsByRussian,
-    "ch": localizedProficiencyLevelsByChinese
-]
-
-// Получение локализации на основе текущей локали
-func getLocalizedLevels(for language: Language, locale: String) -> [String] {
-    guard let localeTranslations = localizedProficiencyLevelsByLocale[locale],
-          let levelTranslations = localeTranslations[language.code] else {
-        return language.proficiencyLevels
-    }
-    return language.proficiencyLevels.map { levelTranslations[$0] ?? $0 }
+enum Levels: String, Codable {
+    case starter = "starter"
+    case elementary = "elementary"
+    case preIntermediate = "pre-intermediate"
+    case intermediate = "intermediate"
+    case intermediatePlus = "intermediate-plus"
+    case upperIntermediate = "upper-intermediate"
+    case advanced = "advanced"
+    case unknown = "unknown"
 }
 
 // MARK: - MOC data
@@ -144,9 +36,8 @@ func getBooks() -> [Book] {
             title: "The New Accelerator",
             cover: "The_New_Accelerator-H_G_Wells",
             sound: nil,
-            downloadLink: "https://english-e-reader.net/book/the-new-accelerator-h-g-wells",
-            language: english,
-            level: "B2",
+            link: "https://english-e-reader.net/book/the-new-accelerator-h-g-wells",
+            level: .intermediatePlus,
             attributes: ["downloaded": "303", "liked": "0", "looked": "343", "dateAdded": "12.12.2024", "popular": "true"]),
         Book(
             id: "2",
@@ -154,9 +45,8 @@ func getBooks() -> [Book] {
             title: "The Sky Readers",
             cover: "The_Sky_Readers-Sue_Murray",//https://english-e-reader.net/book/the-sky-readers-sue-murray",
             sound: "https://english-e-reader.net/book/the-sky-readers-sue-murray",
-            downloadLink: "https://english-e-reader.net/book/the-sky-readers-sue-murray",
-            language: english,
-            level: "B1",
+            link: "https://english-e-reader.net/book/the-sky-readers-sue-murray",
+            level: .intermediate,
             attributes: ["comming_soon": "true"]),
         Book(
             id: "3",
@@ -164,9 +54,8 @@ func getBooks() -> [Book] {
             title: "Six Sketches",
             cover: "Six_Sketches-Leslie_Dunkling",//"https://english-e-reader.net/book/six-sketches-leslie-dunkling",
             sound: nil,
-            downloadLink: "https://english-e-reader.net/book/six-sketches-leslie-dunkling",
-            language: english,
-            level: "A1",
+            link: "https://english-e-reader.net/book/six-sketches-leslie-dunkling",
+            level: .starter,
             attributes: nil),
         Book(
             id: "4",
@@ -174,9 +63,8 @@ func getBooks() -> [Book] {
             title: "Hachiko",
             cover: "book",
             sound: nil,
-            downloadLink: "https://english-e-reader.net/book/hachiko-nicole-irving",
-            language: english,
-            level: "A2",
+            link: "https://english-e-reader.net/book/hachiko-nicole-irving",
+            level: .elementary,
             attributes: ["popular": "true"]),
         Book(
             id: "5",
@@ -184,9 +72,8 @@ func getBooks() -> [Book] {
             title: "Dangerous Game",
             cover: "book",
             sound: nil,
-            downloadLink: "https://english-e-reader.net/book/dangerous-game-harris-william",
-            language: english,
-            level: "B1",
+            link: "https://english-e-reader.net/book/dangerous-game-harris-william",
+            level: .intermediate,
             attributes: nil)
     ]
 }

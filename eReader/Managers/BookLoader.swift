@@ -70,7 +70,7 @@ class BookLoader {
                             let linkSrc = try bookContainer.select("a").first()
                             let downloadLink = try linkSrc?.attr("href")
                             
-                            let language = english // TODO: или динамически парсить язык
+//                            let language = english // TODO: или динамически парсить язык
                             
                             let levelAlt = try bookContainer.select("img").last()
                             let level = try levelAlt?.attr("title")
@@ -83,9 +83,9 @@ class BookLoader {
                                 title: title,
                                 cover: "https://english-e-reader.net" + (cover ?? ""), // TODO: добавить картинку по умолчанию
                                 sound: sound.isEmpty ? nil : sound,
-                                downloadLink: downloadLink ?? "",
-                                language: language,
-                                level: level ?? "", // TODO: добавить картинку по умолчанию
+                                link: downloadLink ?? "",
+//                                language: language,
+                                level: Levels(rawValue: level ?? "") ?? .unknown, // TODO: добавить картинку по умолчанию
                                 attributes: [
                                     "category": bookCategory,
                                     "downloaded": "",

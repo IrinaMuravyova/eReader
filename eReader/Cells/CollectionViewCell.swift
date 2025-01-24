@@ -45,22 +45,24 @@ class CollectionViewCell: UICollectionViewCell {
         bookAuthorLabel.text = book.author
         likedImage.tintColor = .gray
         levelImageView.image = switch book.level {
-        case english.proficiencyLevels[0] :
+        case .starter :
             UIImage(named: "starter")
-        case english.proficiencyLevels[1] :
+        case .elementary :
             UIImage(named: "elementary")
-        case english.proficiencyLevels[2] :
+        case .preIntermediate :
             UIImage(named: "pre_intermediate")
-        case english.proficiencyLevels[3] :
+        case .intermediate :
             UIImage(named: "intermediate")
-        case english.proficiencyLevels[4] :
+        case .intermediatePlus :
             UIImage(named: "intermediate_plus")
-        case english.proficiencyLevels[5] :
+        case .upperIntermediate :
             UIImage(named: "upper-intermediate")
-        case english.proficiencyLevels[6] :
+        case .advanced :
             UIImage(named: "advanced")
-        default:
-            UIImage(named: "native")
+//        default:
+//            UIImage(named: "native")
+        case .unknown:
+            UIImage(named: "unknown")
         }
         
         if let downloadedCount = book.attributes?["downloaded"] {

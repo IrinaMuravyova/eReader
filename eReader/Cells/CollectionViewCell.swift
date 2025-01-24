@@ -59,8 +59,6 @@ final class CollectionViewCell: UICollectionViewCell {
             UIImage(named: "upper-intermediate")
         case .advanced :
             UIImage(named: "advanced")
-//        default:
-//            UIImage(named: "native")
         case .unknown:
             UIImage(named: "unknown")
         }

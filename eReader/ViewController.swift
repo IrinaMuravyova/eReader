@@ -11,7 +11,7 @@ final class ViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     
-    let sectors = ["Last updates", "Coming Soon", "Favourited", "Popular"]
+    let sectors = ["Last updates", "Coming Soon", "Favorited", "Popular"]
     let favoriteSection = 2
     var books: [Book] = [] //getBooks()
     
@@ -66,7 +66,8 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let booksForShow: [Book] = switch indexPath.section {
-            case 0: books.filter({$0.attributes?["category"] == "Last updates"})
+            case 0: 
+                books.filter({$0.attributes?["category"] == "Last updates"})
             case 1:
                 books.filter({($0.attributes?["category"] == "Coming Soon")})
             case 2:
@@ -83,7 +84,7 @@ extension ViewController: UITableViewDataSource {
         // Обновление секции таблицы при изменении коллекции
         cell.onSectionUpdate = {
             DispatchQueue.main.async {
-                tableView.reloadSections(IndexSet(integer: 2), with: .automatic) // указан индекс секции с избранным
+                tableView.reloadSections(IndexSet(integer: 2), with: .automatic) // индекс секции с избранным
             }
         }
         

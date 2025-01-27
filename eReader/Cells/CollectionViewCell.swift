@@ -13,6 +13,7 @@ final class CollectionViewCell: UICollectionViewCell {
     @IBOutlet var bookTitleLabel: UILabel!
     @IBOutlet var bookAuthorLabel: UILabel!
     @IBOutlet var levelImageView: UIImageView!
+    @IBOutlet var downloadedImage: UIImageView!
     @IBOutlet var downloadedLabel: UILabel!
     @IBOutlet var likedImage: UIImageView!
     @IBOutlet var likedLabel: UILabel!
@@ -77,7 +78,24 @@ final class CollectionViewCell: UICollectionViewCell {
         
         if let category = book.attributes?["category"] {
             if category == "Coming Soon" {
-                statisticsView.isHidden = true
+                downloadedImage.isHidden = true
+                downloadedLabel.isHidden = true
+                likedLabel.isHidden = true
+                
+                likedImage.contentMode = .scaleAspectFit
+                likedImage.translatesAutoresizingMaskIntoConstraints = false
+                
+                NSLayoutConstraint.activate([
+                            // Центрируем изображение по вертикали
+                    likedImage.centerYAnchor.constraint(equalTo: statisticsView.centerYAnchor),
+                            
+                            // Смещаем изображение на 1/4 вправо относительно центра
+                    likedImage.centerXAnchor.constraint(equalTo: statisticsView.centerXAnchor, constant:  statisticsView.frame.width / 8 ),
+                            
+                            // Устанавливаем ширину и высоту изображения
+                    likedImage.widthAnchor.constraint(equalToConstant: 15),
+                    likedImage.heightAnchor.constraint(equalToConstant: 15)
+                ])
             }
         }
     }

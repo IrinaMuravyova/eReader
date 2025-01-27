@@ -36,7 +36,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZo-3L-lHN">
                         <rect key="frame" x="5" y="207" width="200" height="20"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="gJZ-Rp-DYC">
+                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="gJZ-Rp-DYC">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="18"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="btR-lz-pqT">
@@ -75,6 +75,7 @@
                             <constraint firstAttribute="height" constant="20" id="KfH-LV-RDK"/>
                             <constraint firstItem="gJZ-Rp-DYC" firstAttribute="leading" secondItem="BZo-3L-lHN" secondAttribute="leading" id="MGw-bZ-VqL"/>
                             <constraint firstAttribute="trailing" secondItem="gJZ-Rp-DYC" secondAttribute="trailing" id="YBZ-Av-9TX"/>
+                            <constraint firstItem="gJZ-Rp-DYC" firstAttribute="top" secondItem="BZo-3L-lHN" secondAttribute="top" id="kQs-r4-DJG"/>
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="oYX-BU-Ver">
@@ -125,6 +126,7 @@
                 <outlet property="bookAuthorLabel" destination="Hnf-Hi-5E2" id="elb-LD-wTq"/>
                 <outlet property="bookTitleLabel" destination="Cy7-hU-ifd" id="s9Q-J5-TSV"/>
                 <outlet property="coverImageView" destination="6VP-MQ-pjF" id="Ceh-9m-VnX"/>
+                <outlet property="downloadedImage" destination="btR-lz-pqT" id="9xm-Yl-8lX"/>
                 <outlet property="downloadedLabel" destination="G57-Z0-9N6" id="jxG-wW-5zy"/>
                 <outlet property="levelImageView" destination="lS4-bK-Qfb" id="9uA-Qt-0to"/>
                 <outlet property="likedImage" destination="h8X-xl-lJC" id="Trp-Vc-ujF"/>
@@ -132,7 +134,7 @@
                 <outlet property="soundImageView" destination="wEE-TM-wns" id="XCm-nb-YKr"/>
                 <outlet property="statisticsView" destination="BZo-3L-lHN" id="E21-r4-MEH"/>
             </connections>
-            <point key="canvasLocation" x="141.98473282442748" y="104.5774647887324"/>
+            <point key="canvasLocation" x="144" y="114"/>
         </collectionViewCell>
     </objects>
     <resources>
@@ -143,13 +145,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -11,9 +11,9 @@ final class ViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     
-    let sectors = ["Last updates", "Coming Soon", "Favorited", "Popular"]
-    let favoriteSection = 2
-    var books: [Book] = [] //getBooks()
+    private let sectors = ["Last updates", "Coming Soon", "Favorited", "Popular"]
+    private let favoriteSection = 2
+    private var books: [Book] = [] //getBooks()
     
     override func viewDidLoad() {
         super.viewDidLoad()

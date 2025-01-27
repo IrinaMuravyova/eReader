@@ -10,8 +10,8 @@ import UIKit
 
 final class BookLoader {
     
-    let urlEReader = "https://english-e-reader.net"
-    var books: [Book] = []
+    private let urlEReader = "https://english-e-reader.net"
+    private var books: [Book] = []
     
     func fetchBooks(completion: @escaping ([Book]) -> Void) {
         
@@ -58,19 +58,19 @@ final class BookLoader {
                         let bookContainers = try category.parent()!.parent()!.select(".book-container") //TODO: обработать опционалы
                         
                         for bookContainer in bookContainers {
-                            let id = try bookContainer.attr("data-id") //TODO: уточнить селектор
+                            
                             let author = try bookContainer.parent()?.select("p.cover").text()
                             let title = try bookContainer.select("h4").text()
                             
                             let coverSrc = try bookContainer.select("img").first()
                             let cover = try coverSrc?.attr("src")
                             
+                            let id = try coverSrc?.attr("title") //TODO: уточнить селектор
+                            
                             let sound = try bookContainer.select(".sound-class-name").text() // TODO: Уточнить селектор
                             
                             let linkSrc = try bookContainer.select("a").first()
                             let downloadLink = try linkSrc?.attr("href")
-                            
-//                            let language = english // TODO: или динамически парсить язык
                             
                             let levelAlt = try bookContainer.select("img").last()
                             let level = try levelAlt?.attr("title")
@@ -78,13 +78,12 @@ final class BookLoader {
                             let bookCategory = try category.text()
                             
                             var book = Book(
-                                id: id,
+                                id: id ?? "",
                                 author: author ?? "",
                                 title: title,
                                 cover: "https://english-e-reader.net" + (cover ?? ""), // TODO: добавить картинку по умолчанию
                                 sound: sound.isEmpty ? nil : sound,
                                 link: downloadLink ?? "",
-//                                language: language,
                                 level: Levels(rawValue: level ?? "") ?? .unknown, // TODO: добавить картинку по умолчанию
                                 attributes: [
                                     "category": bookCategory,

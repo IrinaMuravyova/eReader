@@ -8,7 +8,7 @@
 import SwiftSoup
 import UIKit
 
-final class BookLoader {
+final class BooksLoader {
     
     private let urlEReader = "https://english-e-reader.net"
     private var books: [Book] = []
@@ -95,7 +95,7 @@ final class BookLoader {
                             if URL(string: downloadLink ?? "") != nil  {
                                 
                                 group.enter() // Увеличиваем счётчик операций
-                                BookLoader.fetchBookStatistics(from: downloadLink!) { downloaded, liked in
+                                BooksLoader.fetchBookStatistics(from: downloadLink!) { downloaded, liked in
  
                                     book.attributes?["downloaded"] = downloaded.formatted()
                                     book.attributes?["liked"] = liked.formatted()

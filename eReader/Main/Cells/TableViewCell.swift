@@ -84,6 +84,7 @@ extension TableViewCell: UICollectionViewDataSource {
             self.onSectionUpdate?()
         }
         print("Image tapped at index: \(indexPath.item)") //TODO: Удалить после отладки
+        
     }
     
 }

@@ -22,7 +22,7 @@ final class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        let bookLoader = BookLoader()
+        let bookLoader = BooksLoader()
         bookLoader.fetchBooks{ [weak self] loadedBooks in
             guard let self = self else { return }
             

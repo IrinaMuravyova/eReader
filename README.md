@@ -1,5 +1,5 @@
 <p align="center">
-      <img src="https://i.ibb.co/qmqv7ZY/2024-04-13-17-42-50.png" width="726">
+      <img src="https://i.ibb.co/qmqv7ZY/2024-04-13-17-42-50.png" width="200">
 </p>
 
 <p align="center">
@@ -10,17 +10,18 @@
 
 ## About
 
-Приложение-читалка для сайта https://english-e-reader.net/.
-Приложение загружает книги по сети с помощью парсинга HTML.
-Книги разделяются по категориям. 
-Также могут быть пролистаны и догружены по категориям.
-Приложение подразумевает:
- - режим скачивания книги на iPhone пользователя
- - режим чтения книги с запоминанием текущей страницы
- - возможность поделиться книгой через соцсети
+Website reader application https://english-e-reader.net .
+The application downloads books over the web using HTML parsing.
+Books are divided into categories. 
+They can also be scrolled through and loaded by category.
+The application implies:
+
+ - book download mode on the user's iPhone
+ - book reading mode with memorization of the current page
+ - the ability to share a book via social media
 
 
-**В проекте используются:**
+**The project uses:**
 
 * URLSessions
 * GCD
@@ -29,12 +30,12 @@
 * UITableViewController
 * UICollectionViewController
 
-### Техническое задание к проекту:
+### Terms of reference for the project:
 
-Сделать приложение по сайту https://english-e-reader.net/.
-Задача загрузки озвучки книги пока не стоит.
-Предусмотреть режим чтения книги, добавления в избранное и 
-возможность поделиться ссылкой на книгу через соцсети.
+Create an application on the site https://english-e-reader.net.
+The task of downloading the book's voiceover is not worth it yet.
+Provide a mode for reading a book, adding to favorites, and
+the ability to share a link to the book via social media.
 
 
 ![screenshot of sample](https://i.ibb.co/vXJbgDp/2025-01-23-11-38-11.png)
@@ -43,18 +44,18 @@
 
 ### Model:
 
-      Book - основная модель данных
+      Book - the basic data model
 
 ### Managers:
 
-      FavoritesManager - отвечает за добавление/удаление/изменение и загрузку избранных книг пользователя
-      BookLoader - отвечает за загрузку книг с сайта и парсинг этих данных
-      ImageCache - отвечает за кэщ обложек книг
+      Favorites Manager - responsible for adding/deleting/modifying and uploading the user's favorite books
+      Bootloader is responsible for downloading books from the website and parsing this data.
+      ImageCache - responsible for the cache of book covers
 
 ### Cells:
 
-      TableViewCell - отвечает за отображение секции каталога
-      CollectionViewCell - содержит все аттрибуты книги 
+      TableViewCell - responsible for displaying the catalog section
+      Collection View Cell - contains all the attributes of the book
   
 ## Developers
 
